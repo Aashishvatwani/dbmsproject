@@ -138,8 +138,8 @@ const FrontPage = () => {
           <h1 className="text-5xl font-bold text-[#FFD700] mb-4">Your Trip Awaits</h1>
           <p className="text-lg text-[#F5F5F5] opacity-75 mb-6">Discover incredible destinations and book your adventure.</p>
           <div className="space-x-4">
-            <button href="#" className="px-6 py-3 bg-[#E53935] rounded-lg text-[#F5F5F5] hover:bg-[#D32F2F] transition " onClick={handleLoginClick}>Login</button>
-            <button href="#" className="px-6 py-3 bg-[#E53935] rounded-lg text-[#F5F5F5] hover:bg-[#D32F2F] transition" onClick={handleSignupClick}>Sign Up</button>
+            <button  className="px-6 py-3 bg-[#E53935] rounded-lg text-[#F5F5F5] hover:bg-[#D32F2F] transition cursor-pointer" onClick={handleLoginClick}>Login</button>
+            <button  className="px-6 py-3 bg-[#E53935] rounded-lg text-[#F5F5F5] hover:bg-[#D32F2F] transition cursor-pointer" onClick={handleSignupClick}>Sign Up</button>
           </div>
         </div>
       </section>
