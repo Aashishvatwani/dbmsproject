@@ -1,16 +1,26 @@
 import React, { useEffect, useState, useRef } from 'react';
 
 const images = [
-  'https://images.unsplash.com/photo-1726137569872-28e3f796d4a2?q=80&w=2070&auto=format&fit=crop',
-  'https://images.unsplash.com/photo-1742201876722-85a042294575?q=80&w=1965&auto=format&fit=crop',
-  'https://images.unsplash.com/photo-1741610748460-fb2e33cc6390?q=80&w=1972&auto=format&fit=crop',
-  'https://images.unsplash.com/photo-1741648711665-e1a8003b7891?q=80&w=1974&auto=format&fit=crop',
-  'https://images.unsplash.com/photo-1741462166411-b94730c55171?q=80&w=1970&auto=format&fit=crop',
-  'https://images.unsplash.com/photo-1741732311554-911ecc8da478?q=80&w=1974&auto=format&fit=crop',
-  'https://images.unsplash.com/photo-1743021192899-5e78625bf0c7?q=80&w=2070&auto=format&fit=crop',
-  'https://images.unsplash.com/photo-1741851374655-3911c1b0e95a?q=80&w=1974&auto=format&fit=crop',
-  'https://images.unsplash.com/photo-1741850820831-e244e5b39111?w=600&auto=format&fit=crop&q=60',
-  'https://images.unsplash.com/photo-1741851373451-59e7260fe72c?q=80&w=1974&auto=format&fit=crop',
+  'https://img.freepik.com/free-photo/full-shot-travel-concept-with-landmarks_23-2149153258.jpg?semt=ais_hybrid&w=740',
+
+'https://images.unsplash.com/photo-1506744038136-46273834b3fb?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w5MTMyMXwwfDF8c2VhcmNofDIwfHx0cmF2ZWx8ZW58MHx8fHwxNjg4NDI4ODU3&ixlib=rb-4.0.3&q=80&w=1920',
+
+'https://img.freepik.com/free-photo/travel-concept-with-worldwide-landmarks_23-2149153263.jpg?t=st=1745675832~exp=1745679432~hmac=2035620bcef57941c50619898e4682903357fff50009b6f3c74168225944f8ed&w=996',
+
+'https://images.unsplash.com/photo-1507525428034-b723cf961d3e?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w5MTMyMXwwfDF8c2VhcmNofDQwfHx0cmF2ZWx8ZW58MHx8fHwxNjg4NDI4ODU3&ixlib=rb-4.0.3&q=80&w=1920',
+
+'https://img.freepik.com/free-photo/rear-view-back-young-asian-hiking-man-standing-riseup-hands-with-happy-peak-rocky-mountain-copy-space_1150-57186.jpg?ga=GA1.1.1767966689.1737279095&semt=ais_hybrid&w=740',
+
+'https://images.unsplash.com/photo-1506748686214-e9df14d4d9d0?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w5MTMyMXwwfDF8c2VhcmNofDUwfHx0cmF2ZWx8ZW58MHx8fHwxNjg4NDI4ODU3&ixlib=rb-4.0.3&q=80&w=1920',
+
+'https://www.ey.com/adobe/dynamicmedia/deliver/dm-aid--cf0890d8-bef6-4775-97ac-25c96c5080ff/ey-traveller-2.jpg?preferwebp=true&quality=85',
+
+'https://images.unsplash.com/photo-1469854523086-cc02fe5d8800?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w5MTMyMXwwfDF8c2VhcmNofDc2fHx0cmF2ZWx8ZW58MHx8fHwxNjg4NDI4ODU3&ixlib=rb-4.0.3&q=80&w=1920',
+
+'https://img.freepik.com/free-photo/airport-terminal_1417-1456.jpg?ga=GA1.1.1767966689.1737279095&semt=ais_hybrid&w=740',
+
+'https://images.unsplash.com/photo-1526778548025-fa2f459cd5c1?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w5MTMyMXwwfDF8c2VhcmNofDEwMHx8dHJhdmVsfGVufDB8fHx8MTY4ODQyODg1Nw&ixlib=rb-4.0.3&q=80&w=1920',
+
 ];
 
 const TravelMomentsSection = () => {
@@ -50,7 +60,7 @@ const TravelMomentsSection = () => {
         </p>
 
         <div
-          className="flex justify-center items-center overflow-hidden w-full h-[300px] md:h-[450px] relative rounded-xl shadow-lg border border-[#795548]" 
+          className="flex justify-center items-center overflow-hidden w-full h-[300px] md:h-[450px] relative rounded-xl shadow-lg " 
           aria-live="polite"
         >
           {images.map((src, index) => (

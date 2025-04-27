@@ -80,9 +80,9 @@ const FrontPage = () => {
   ];
 
   const featuredDestinations = [
-    { name: 'Paris', image: 'https://via.placeholder.com/300x200/FFD700/333?Text=Paris', description: 'City of Love', price: '₹50,000' },
-    { name: 'Bali', image: 'https://via.placeholder.com/300x200/E53935/333?Text=Bali', description: 'Island of Gods', price: '₹40,000' },
-    { name: 'Rome', image: 'https://via.placeholder.com/300x200/795548/eee?Text=Rome', description: 'Ancient History', price: '₹45,000' },
+    { name: 'Paris', image: 'https://res.cloudinary.com/dtljonz0f/image/upload/c_auto,ar_4:3,w_3840,g_auto/f_auto/q_auto/v1/shutterstock_2118458942_ss_non-editorial_jnjpwq?_a=BAVAZGDX0', description: 'City of Love', price: '₹50,000' },
+    { name: 'Bali', image: 'https://internationalliving.com/_next/image/?url=https%3A%2F%2Fimages.ctfassets.net%2Fwv75stsetqy3%2F1cGIIrtVVRK6vLjcXKSsh1%2Fb49d409f4de8636da5bdcb88fc4bf4a9%2FBali__Indonesia.jpg%3Fw%3D1800%26h%3D600%26q%3D60%26fit%3Dfill%26fm%3Dwebp&w=3840&q=60', description: 'Island of Gods', price: '₹40,000' },
+    { name: 'Rome', image: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQG-NQzkyXqB-mMXvFznwB3Xnc6kIIn6HDrgQ&s', description: 'Ancient History', price: '₹45,000' },
   ];
 
   const advantages = [
@@ -93,8 +93,8 @@ const FrontPage = () => {
   ];
 
   const testimonialsData = [
-    { name: 'John Doe', quote: 'Amazing experience! Highly recommended.', image: 'https://via.placeholder.com/50x50/F5F5F5/333?Text=JD' },
-    { name: 'Jane Smith', quote: 'Easy booking and great service.', image: 'https://via.placeholder.com/50x50/F5F5F5/333?Text=JS' },
+    { name: 'John Doe', quote: 'Amazing experience! Highly recommended.', image: 'https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8cmFuZG9tJTIwcGVvcGxlfGVufDB8fDB8fHww' },
+    { name: 'Jane Smith', quote: 'Easy booking and great service.', image: 'https://img.freepik.com/free-photo/young-adult-man-wearing-hoodie-beanie_23-2149393636.jpg' },
   ];
 
   const faqsData = [
@@ -105,7 +105,7 @@ const FrontPage = () => {
   return (
     <div className="relative font-sans bg-[#212121] text-[#F5F5F5]">
       {/* Navbar */}
-      <nav className="fixed w-full bg-[#333333] bg-opacity-95 backdrop-blur p-4 flex justify-center z-20 shadow-lg">
+      <nav className="fixed w-full bg-[#333333] bg-opacity-95 backdrop-blur p-4 flex flex-wrap justify-center z-20 shadow-lg">
         {['home', 'featured', 'pricing', 'whyUs', 'testimonials', 'blog', 'contact', 'faq'].map((section) => (
           <button
             key={section}
@@ -130,19 +130,41 @@ const FrontPage = () => {
 
       {/* Hero Section */}
       <section
-        ref={heroRef}
-        className="min-h-screen flex flex-col justify-center items-center bg-cover bg-center"
-        style={{ backgroundImage: "url('https://via.placeholder.com/1920x1080?text=Explore+the+World')" }}
+  ref={heroRef}
+  className="min-h-screen flex flex-col justify-center items-center relative overflow-hidden"
+>
+  <video
+    autoPlay
+    loop
+    muted
+    playsInline
+    className="absolute w-full h-full object-cover z-0 backdrop-blur-2xl"
+  >
+   <source src="https://media.istockphoto.com/id/933856552/video/passenger-walking-across-the-airport-terminal-with-a-wheeled-travel-bag-and-sun-shining-behind.mp4?s=mp4-640x640-is&k=20&c=5z_EquF6x-8nOAHeo3RgU_OJ-76mEl2kc9VB22r_ktY=" type="video/mp4" />
+
+    Your browser does not support the video tag.
+  </video>
+  <div className="absolute w-full h-full bg-black opacity-40"></div>
+  <div className="relative z-10 bg-[#333333] bg-opacity-50 p-8 rounded-2xl text-center">
+    <h1 className="text-5xl font-bold text-[#FFD700] mb-4">Your Trip Awaits</h1>
+    <p className="text-lg text-[#F5F5F5] opacity-75 mb-6">Discover incredible destinations and book your adventure.</p>
+    <div className="space-x-4">
+      <button
+        className="px-6 py-3 bg-[#E53935] rounded-lg text-[#F5F5F5] hover:bg-[#D32F2F] transition cursor-pointer"
+        onClick={handleLoginClick}
       >
-        <div className="bg-[#333333] bg-opacity-80 p-8 rounded-2xl text-center">
-          <h1 className="text-5xl font-bold text-[#FFD700] mb-4">Your Trip Awaits</h1>
-          <p className="text-lg text-[#F5F5F5] opacity-75 mb-6">Discover incredible destinations and book your adventure.</p>
-          <div className="space-x-4">
-            <button  className="px-6 py-3 bg-[#E53935] rounded-lg text-[#F5F5F5] hover:bg-[#D32F2F] transition cursor-pointer" onClick={handleLoginClick}>Login</button>
-            <button  className="px-6 py-3 bg-[#E53935] rounded-lg text-[#F5F5F5] hover:bg-[#D32F2F] transition cursor-pointer" onClick={handleSignupClick}>Sign Up</button>
-          </div>
-        </div>
-      </section>
+        Login
+      </button>
+      <button
+        className="px-6 py-3 bg-[#E53935] rounded-lg text-[#F5F5F5] hover:bg-[#D32F2F] transition cursor-pointer"
+        onClick={handleSignupClick}
+      >
+        Sign Up
+      </button>
+    </div>
+  </div>
+</section>
+
 
       {/* Featured Destinations */}
       <section ref={featuredRef} className="py-16 bg-[#2D2D2D]">
