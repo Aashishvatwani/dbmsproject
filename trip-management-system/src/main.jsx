@@ -7,6 +7,7 @@ import App from './App.jsx'
 import SignUpPage from './components/Signup.jsx'
 import LoginPage from './components/Login.jsx'
 import FrontPage from './components/Frontpage.jsx'
+import FrontPage_after from './components/Frontend_after.jsx'
 const router = createBrowserRouter([
   {
     path: "/",
@@ -32,6 +33,14 @@ const router = createBrowserRouter([
                 
             ),
         },
+        {
+          path: "/home",
+          element: (
+              
+                  <FrontPage_after />
+             
+          ),
+        }
       ],
     },
   ])
