@@ -1,0 +1,168 @@
+/* TraditionalCalendar.css */
+
+/* Overall calendar styling to evoke a traditional feel */
+.react-calendar {
+    width: 100%; /* Make it responsive within its container */
+    background-color: #f9f5f0; /* Off-white, warm background */
+    border: 1px solid #d4a373; /* Earthy brown border */
+    border-radius: 8px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+    font-family: 'serif'; /* Use a serif font for a traditional look */
+    line-height: 1.125em;
+  }
+  
+  .react-calendar--doubleMonth {
+    width: 640px;
+  }
+  
+  .react-calendar__navigation {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0.75em 1em;
+    background-color: #f2cc8f; /* Mustard yellow navigation background */
+    border-bottom: 1px solid #d4a373;
+    border-top-left-radius: 8px;
+    border-top-right-radius: 8px;
+  }
+  
+  .react-calendar__navigation button {
+    color: #b85450; /* Rich reddish-brown navigation arrows */
+    min-width: 44px;
+    background: none;
+    border: none;
+    font-size: 1.2em;
+    cursor: pointer;
+    transition: color 0.3s ease-in-out;
+  }
+  
+  .react-calendar__navigation button:disabled {
+    background-color: #f0f0f0;
+    color: #999;
+    cursor: default;
+  }
+  
+  .react-calendar__navigation button:enabled:hover,
+  .react-calendar__navigation button:enabled:focus {
+    color: #8a3b38; /* Darker reddish-brown on hover/focus */
+  }
+  
+  .react-calendar__navigation__label {
+    font-weight: bold;
+    font-size: 1.1em;
+    color: #588157; /* Deep green month/year label */
+  }
+  
+  .react-calendar__navigation__label__labelText {
+    /* Inherits font from .react-calendar */
+  }
+  
+  .react-calendar__month-view__weekdays {
+    color: #588157; /* Deep green weekdays */
+    font-size: 0.9em;
+    font-weight: bold;
+    display: flex;
+  }
+  
+  .react-calendar__month-view__weekdays__weekday {
+    padding: 0.5em;
+    text-align: center;
+    flex-grow: 1;
+    flex-basis: 0;
+  }
+  
+  .react-calendar__month-view__days {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    grid-gap: 0.5em;
+    padding: 0.5em;
+  }
+  
+  .react-calendar__month-view__days__day {
+    color: #3d405b; /* Dark blue-gray days */
+    padding: 0.6em 0.5em;
+    text-align: center;
+    border-radius: 4px;
+    transition: background-color 0.2s ease-in-out, color 0.2s ease-in-out;
+  }
+  
+  .react-calendar__month-view__days__day--weekend {
+    color: #e07a5f; /* Burnt orange weekends */
+  }
+  
+  .react-calendar__month-view__days__day--neighboringMonth {
+    color: #999;
+  }
+  
+  .react-calendar__tile {
+    background: none;
+    border: none;
+    font-size: 0.8em;
+    text-align: center;
+    padding: 0.6em 0.5em;
+    border-radius: 4px;
+    transition: background-color 0.2s ease-in-out, color 0.2s ease-in-out;
+  }
+  
+  .react-calendar__tile:disabled {
+    background-color: #f0f0f0;
+    color: #999;
+    cursor: default;
+  }
+  
+  .react-calendar__tile:enabled:hover,
+  .react-calendar__tile:enabled:focus {
+    background-color: #ede0d4; /* Light beige hover/focus */
+    color: #333;
+  }
+  
+  .react-calendar__tile--now {
+    background: #f2cc8f; /* Mustard yellow for today */
+    color: #3d405b;
+  }
+  
+  .react-calendar__tile--now:enabled:hover,
+  .react-calendar__tile--now:enabled:focus {
+    background: #e0b872; /* Darker mustard yellow hover/focus for today */
+    color: #333;
+  }
+  
+  .react-calendar__tile--hasActive {
+    background: #f2cc8f; /* Mustard yellow for dates with events/active */
+    color: #3d405b;
+  }
+  
+  .react-calendar__tile--hasActive:enabled:hover,
+  .react-calendar__tile--hasActive:enabled:focus {
+    background: #e0b872; /* Darker mustard yellow hover/focus for active dates */
+    color: #333;
+  }
+  
+  .react-calendar__tile--active {
+    background: #b85450 !important; /* Rich reddish-brown for selected date */
+    color: white !important;
+    font-weight: bold;
+  }
+  
+  .react-calendar__tile--active:enabled:hover,
+  .react-calendar__tile--active:enabled:focus {
+    background: #8a3b38 !important; /* Darker reddish-brown hover/focus for selected date */
+  }
+  
+  .react-calendar--selectRange .react-calendar__tile--hover {
+    background-color: #ede0d4; /* Light beige for range selection hover */
+  }
+  
+  /* Optional: Subtle border for individual tiles in the month view */
+  /*
+  .react-calendar__month-view__days__day,
+  .react-calendar__tile {
+    border: 1px solid #f0f0f0;
+  }
+  */
+  
+  /* Optional: More traditional font (ensure it's imported or a system font) */
+  .react-calendar {
+    /* font-family: 'Devanagari', serif; /* Example for Devanagari script */
+    /* You might need to import fonts using @import in this CSS file or in your main CSS */
+  }

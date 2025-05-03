@@ -3,6 +3,9 @@ import { motion } from 'framer-motion';
 import TravelMomentsSection from './Slider';
 import BlogPostSlider from './BlogPostSlider';
 import { useNavigate } from 'react-router-dom';
+import Logout from './Logout';
+import Particles from "react-tsparticles";
+import { loadFull } from "tsparticles";
 const FrontPage = () => {
   const [activeSection, setActiveSection] = useState('home');
   const [showStars, setShowStars] = useState(false);
@@ -21,6 +24,9 @@ const FrontPage = () => {
   const handleSignupClick = () => {
     navigate('/signup'); // 👈 this takes you to the login page
   };
+  const particlesInit = async (main) => {
+      await loadFull(main);
+    };
   useEffect(() => {
     const onScroll = () => {
       const y = window.scrollY;
@@ -92,10 +98,7 @@ const FrontPage = () => {
     { icon: 'fa-headphones', title: '24/7 Support', description: 'Dedicated customer support around the clock.' },
   ];
 
-  const testimonialsData = [
-    { name: 'John Doe', quote: 'Amazing experience! Highly recommended.', image: 'https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8cmFuZG9tJTIwcGVvcGxlfGVufDB8fDB8fHww' },
-    { name: 'Jane Smith', quote: 'Easy booking and great service.', image: 'https://img.freepik.com/free-photo/young-adult-man-wearing-hoodie-beanie_23-2149393636.jpg' },
-  ];
+
 
   const faqsData = [
     { question: 'What is your cancellation policy?', answer: 'Our cancellation policy varies depending on the booking...' },
@@ -106,7 +109,7 @@ const FrontPage = () => {
     <div className="relative font-sans bg-[#212121] text-[#F5F5F5]">
       {/* Navbar */}
       <nav className="fixed w-full bg-[#333333] bg-opacity-95 backdrop-blur p-4 flex flex-wrap justify-center z-20 shadow-lg">
-        {['home', 'featured', 'pricing', 'whyUs', 'testimonials', 'blog', 'contact', 'faq'].map((section) => (
+        {['home', 'featured', 'pricing', 'whyUs', 'blog', 'contact', 'faq'].map((section) => (
           <button
             key={section}
             onClick={() => scrollToSection({
@@ -114,7 +117,7 @@ const FrontPage = () => {
               featured: featuredRef,
               pricing: pricingRef,
               whyUs: whyUsRef,
-              testimonials: testimonialsRef,
+             
               blog: blogRef,
               contact: contactRef,
               faq: faqRef,
@@ -138,10 +141,9 @@ const FrontPage = () => {
     loop
     muted
     playsInline
-    className="absolute w-full h-full object-cover z-0 backdrop-blur-2xl"
+    className="absolute w-full h-full object-cover z-0 backdrop-blur-2xl opacity-60" // Adjusted opacity here
   >
-   <source src="https://media.istockphoto.com/id/933856552/video/passenger-walking-across-the-airport-terminal-with-a-wheeled-travel-bag-and-sun-shining-behind.mp4?s=mp4-640x640-is&k=20&c=5z_EquF6x-8nOAHeo3RgU_OJ-76mEl2kc9VB22r_ktY=" type="video/mp4" />
-
+    <source src="https://media.istockphoto.com/id/933856552/video/passenger-walking-across-the-airport-terminal-with-a-wheeled-travel-bag-and-sun-shining-behind.mp4?s=mp4-640x640-is&k=20&c=5z_EquF6x-8nOAHeo3RgU_OJ-76mEl2kc9VB22r_ktY=" type="video/mp4" />
     Your browser does not support the video tag.
   </video>
   <div className="absolute w-full h-full bg-black opacity-40"></div>
@@ -164,6 +166,7 @@ const FrontPage = () => {
     </div>
   </div>
 </section>
+
 
 
       {/* Featured Destinations */}
@@ -238,23 +241,7 @@ const FrontPage = () => {
       </section>
 
       {/* Testimonials */}
-      <section ref={testimonialsRef} className="py-16 bg-[#2D2D2D]">
-        <div className="container mx-auto text-center">
-          <h2 className="text-3xl font-bold text-[#FFD700] mb-8">Testimonials</h2>
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-            {testimonialsData.map((testimonial, index) => (
-              <div
-                key={index}
-                className="bg-[#424242] rounded-lg p-6 cursor-pointer hover:shadow-lg transition-transform duration-500 hover:scale-105 transition-shadow duration-300" // Added cursor-pointer and hover effect
-              >
-                <img src={testimonial.image} alt={testimonial.name} className="w-12 h-12 rounded-full mx-auto mb-4" />
-                <p className="text-[#F5F5F5] italic mb-3">"{testimonial.quote}"</p>
-                <h4 className="text-[#FFD700] font-semibold">- {testimonial.name}</h4>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
+    
 
       {/* Blog Section */}
       <section ref={blogRef} className="py-16 bg-[#333333]">
@@ -290,9 +277,57 @@ const FrontPage = () => {
           </div>
         </div>
       </section>
+   <section className="relative bg-[#121212] py-24 text-center overflow-hidden">
+      {/* Particle Background */}
+      <Particles
+        id="tsparticles"
+        init={particlesInit}
+        className="absolute inset-0 z-0"
+        options={{
+          fullScreen: { enable: false },
+          background: { color: "#121212" },
+          particles: {
+            number: { value: 100 },
+            color: { value: "#FFD700" },
+            links: {
+              enable: true,
+              color: "#FFD700",
+              distance: 140,
+              opacity: 0.4,
+              width: 1,
+            },
+            move: { enable: true, speed: 1.2 },
+            opacity: { value: 0.6 },
+            size: { value: { min: 1, max: 4 } },
+          },
+        }}
+      />
 
+      {/* Radial Glow Circle */}
+      <div className="absolute -top-48 left-1/2 transform -translate-x-1/2 w-[700px] h-[700px] bg-gradient-to-br from-[#FFD700]/30 to-transparent opacity-25 rounded-full blur-[120px] z-0"></div>
+
+      {/* Heading */}
+      <h2 className="text-5xl md:text-6xl font-extrabold text-[#FFD700] z-10 relative drop-shadow-[0_0_15px_rgba(255,215,0,0.4)]">
+        Are you Ready to Explore World
+      </h2>
+
+      {/* Globe Image + CTA */}
+      <div className="mt-12 relative z-10">
+        <img
+          src="/earth.svg"
+          alt="Globe Hologram"
+          className="w-72 mx-auto animate-[spin_30s_linear_infinite] hover:scale-110 transition-transform duration-700"
+        />
+        <p className="mt-5 text-gray-300 text-lg italic">
+          Your journey starts now...
+        </p>
+        <button className="mt-6 px-8 py-3 bg-[#FFD700] text-black font-semibold rounded-full text-lg shadow-lg hover:bg-yellow-400 transition-transform hover:scale-105 duration-300" onClick={handleLoginClick}>
+          Explore Now →
+        </button>
+      </div>
+    </section>
       {/* Footer */}
-      <footer className="py-6 bg-[#212121] text-center text-[#BDBDBD] border-t border-[#795548]">
+      <footer className="py-6 bg-[#212121] text-center text-[#BDBDBD] ">
         &copy; {new Date().getFullYear()} Your Trip Planner | Contact: +91 86902 43735
       </footer>
     </div>
