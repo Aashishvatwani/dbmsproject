@@ -12,6 +12,7 @@ const bookingRoutes = require('./routes/bookingRoutes');
 const userDetailRoutes = require('./routes/userdetail');
 const finalRoutes = require('./routes/finals');
 const addHotel = require('./routes/hoteladd');
+
 const { GoogleGenerativeAI } = require('@google/generative-ai');
 
 // ✅ Google Generative AI Configuration
@@ -29,10 +30,14 @@ app.use('/api/packages', packageRoutes);
 app.use('/api/bookings', bookingRoutes);
 app.use('/api/userdetail', userDetailRoutes);
 app.use('/api/finals', finalRoutes);
-
+app.use('/api/expense_see', require('./routes/expenses_see'));
 // ✅ Add Hotel Route
-app.use('/api/addhotel', addHotel);
 
+app.use('/api/addhotel', addHotel);
+app.use('/api/ask', require('./routes/AIroute'));
+app.use('/api/aibudget', require('./routes/Aibudget'));
+app.use('/api/expense', require('./routes/expense_upload'));
+app.use('/api/expenseshower', require('./routes/expensesshower'));
 // ✅ User existence check
 app.get('/api/userexists', (req, res) => {
   const { uid } = req.query;

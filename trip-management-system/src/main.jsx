@@ -15,6 +15,14 @@ import BookingPage from './components/Mediam&date.jsx';
 import ForgotPassword from './components/Forgot-password.jsx';
 import TravelDetails from './components/HotelCard.jsx';
 import HotelInfoForm from './components/Generate_package.jsx';
+import TripDashboard from './components2/Trip-Dashboard.jsx';
+import TeamRegistration from './components2/Team-registration.jsx';
+import ExpenseUpload from './components2/ExpenseUpload.jsx';
+import DocumentUploadPage from './components2/DocumentUploadPage.jsx';
+import UserProfilePage from './components2/UserProfilePage.jsx';
+import TeammateDocumentViewer from './components2/Documentviewer.jsx';
+import TeamChatPage from './components2/ChatRoom.jsx';
+import TeamConfirmationPage from './components2/Confirmationforteam.jsx';
 
 const router = createBrowserRouter([
   {
@@ -24,6 +32,56 @@ const router = createBrowserRouter([
       {
         path: "/",
         element: <FrontPage />,
+      },
+      {
+        path: "/Documentview",
+        element: (<ProtectedRoute><TeammateDocumentViewer /></ProtectedRoute>),
+      },
+      {
+        path: "/chatroom",
+        element: (<ProtectedRoute>
+        <TeamChatPage />
+        </ProtectedRoute>),
+      },
+      {
+        path: "/user-profile-page",
+        element: (<ProtectedRoute><UserProfilePage /></ProtectedRoute>),
+      },
+      {
+        path: "/confirmation-page/:teamName",
+        element:(<ProtectedRoute>
+        <TeamConfirmationPage />
+        </ProtectedRoute>
+        ),
+      },
+      {
+        path: "/trip-dashboard",
+        element: (
+          <ProtectedRoute>
+            <TripDashboard />
+            </ProtectedRoute>
+         
+        ),
+      },
+      {
+        path: "/doument-upload",
+        element: (<ProtectedRoute>
+        <DocumentUploadPage />
+        </ProtectedRoute>
+      ),
+      },
+      {
+        path: "/team-registration/:members",
+        element: (<ProtectedRoute>
+        <TeamRegistration />
+        </ProtectedRoute>),
+      },
+      {
+        path: "/expense-upload",
+        element: (<ProtectedRoute>
+        <ExpenseUpload />
+        </ProtectedRoute>
+      ),
       },
   
       {

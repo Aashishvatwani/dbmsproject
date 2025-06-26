@@ -336,7 +336,6 @@ const FrontPage_after = () => {
           </Swiper>
         </div>
       </section>
-
       {/* About Section */}
       <motion.section
         id="about"

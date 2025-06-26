@@ -12,6 +12,7 @@ dist
 dist-ssr
 *.local
 .env
+components2/utils/uploadToIPFS.js
 # Editor directories and files
 .vscode/*
 !.vscode/extensions.json

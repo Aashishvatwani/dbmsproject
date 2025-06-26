@@ -2,11 +2,11 @@ import React, { useState, useEffect } from "react";
 import { motion } from "framer-motion";
 import axios from "axios";
 import emailjs from "emailjs-com";
-
+import { useNavigate } from "react-router-dom";
 const TravelDetails = () => {
   const [travelData, setTravelData] = useState(null);
   const [loading, setLoading] = useState(true);
-
+const Navigate = useNavigate();
   useEffect(() => {
     const fetchFinalDetails = async () => {
       try {
@@ -225,6 +225,15 @@ const TravelDetails = () => {
             className="bg-yellow-500 text-black font-semibold px-6 py-2 rounded-lg hover:bg-yellow-400 transition duration-300"
           >
             Send Budget Details via Email
+          </button>
+        </div>
+        {/* want to have ai powered budget manager */}
+        <div className="text-center mt-6">
+          <button
+            onClick={() => Navigate('/trip-dashboard')}
+            className="bg-yellow-500 text-black font-semibold px-6 py-2 rounded-lg hover:bg-yellow-400 transition duration-300"
+          >
+            AI-Powered Budget Manager (Coming Soon!)
           </button>
         </div>
       </motion.div>

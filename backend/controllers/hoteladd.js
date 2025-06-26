@@ -1,5 +1,5 @@
-const fs = require('fs'); // For createWriteStream
-const fsp = require('fs').promises; // For promise-based read/write
+const fs = require('fs');
+const fsp = require('fs').promises;
 const path = require('path');
 const csvWriter = require('fast-csv');
 
@@ -15,7 +15,7 @@ exports.saveCityAndHotel = async (req, res) => {
     cool_features,
     hotel_name,
     hotel_description,
-    hotel_features = []   // Default to empty array if not provided
+    hotel_features = []
   } = req.body;
 
   if (!city || !hotel_name) {
@@ -29,7 +29,7 @@ exports.saveCityAndHotel = async (req, res) => {
     best_places_to_visit: cool_features,
     timestamp: new Date().toISOString()
   };
-  
+
   try {
     let json = [];
     try {
@@ -38,16 +38,15 @@ exports.saveCityAndHotel = async (req, res) => {
         json = JSON.parse(data);
       }
     } catch (readErr) {
-      if (readErr.code === 'ENOENT') {
-        console.log("hello.json not found, creating a new one.");
-      } else {
+      if (readErr.code !== 'ENOENT') {
         console.error("Error reading hello.json:", readErr);
         return res.status(500).json({ message: "Failed to read city data file." });
+      } else {
+        console.log("hello.json not found, creating a new one.");
       }
     }
-  
+
     const alreadyExists = json.some(entry => entry.city.toLowerCase() === city.toLowerCase());
-  
     if (!alreadyExists) {
       json.push(cityData);
       await fsp.writeFile(helloPath, JSON.stringify(json, null, 2));
@@ -55,7 +54,6 @@ exports.saveCityAndHotel = async (req, res) => {
     } else {
       console.log("City already exists in hello.json, skipping...");
     }
-  
   } catch (writeErr) {
     console.error("Error writing to hello.json:", writeErr);
     return res.status(500).json({ message: "Failed to save city data." });
@@ -64,9 +62,8 @@ exports.saveCityAndHotel = async (req, res) => {
   // --- 2. Append hotel data to CSV file ---
   const newHotel = {
     Hotel_Name: hotel_name,
-    Hotel_Rating: hotel_rating, // Optional
+    Hotel_Rating: hotel_rating || '',
     City: city,
-
     Feature_1: hotel_features[0] || '',
     Feature_2: hotel_features[1] || '',
     Feature_3: hotel_features[2] || '',
@@ -76,18 +73,27 @@ exports.saveCityAndHotel = async (req, res) => {
     Feature_7: hotel_features[6] || '',
     Feature_8: hotel_features[7] || '',
     Feature_9: hotel_features[8] || '',
-    Hotel_Price: hotel_price  
-     // Optional
+Hotel_Price: hotel_price ? parseFloat(hotel_price).toFixed(1) : ''
+
   };
 
   try {
-    const stream = fs.createWriteStream(csvFilePath, { flags: 'a' });
-    const csvStream = csvWriter.format({ headers: false ,  rowDelimiter: '\n', });
+    // Check if file exists and ends with newline
+    try {
+      const existingData = await fsp.readFile(csvFilePath, 'utf-8');
+      if (!existingData.endsWith('\n')) {
+        await fsp.appendFile(csvFilePath, '\n');
+      }
+    } catch (err) {
+      if (err.code !== 'ENOENT') {
+        console.error("Error checking existing CSV file:", err);
+        return res.status(500).json({ message: "Failed while preparing CSV file." });
+      }
+      // If file doesn't exist, it will be created below
+    }
 
-    stream.on('error', (streamErr) => {
-      console.error("Error writing to CSV stream:", streamErr);
-      return res.status(500).json({ message: "Failed to save hotel data to CSV." });
-    });
+    const stream = fs.createWriteStream(csvFilePath, { flags: 'a' });
+    const csvStream = csvWriter.format({ headers: false });
 
     csvStream.pipe(stream).on('finish', () => {
       console.log("Hotel data appended to CSV");
